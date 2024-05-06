@@ -30,7 +30,7 @@ Para rodar a aplicação, siga os passos abaixo:
 ## Diagramas da arquitetura do software:
 
 ### Diagrama de classes:
-![Diagrama de classes.png](./documentos_do_projeto/Diagrama%20de%20classes.png)
+![Diagrama de classes.png](https://drive.google.com/uc?export=view&id=1g8Z4mrtree0fMHMXuwoTZ6eveRQOJGGP)
 
 
 ### Diagrama de Entidade e Relacionamento:
