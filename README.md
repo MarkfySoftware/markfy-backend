@@ -30,11 +30,11 @@ Para rodar a aplicação, siga os passos abaixo:
 ## Diagramas da arquitetura do software:
 
 ### Diagrama de classes:
-![Diagrama de classes.png](https://drive.google.com/uc?export=view&id=1g8Z4mrtree0fMHMXuwoTZ6eveRQOJGGP)
+![Diagrama de classes.png](https://drive.google.com/uc?export=view&id=1OPtObgZA_xpn8W3M-Fb5qXG9g-NKWYQ0)
 
 
 ### Diagrama de Entidade e Relacionamento:
-![DER.png](./documentos_do_projeto/DER.png)
+![DER.png](https://drive.google.com/uc?export=view&id=1g8Z4mrtree0fMHMXuwoTZ6eveRQOJGGP)
 
 ## Vídeo de Apresentação:
 
