@@ -93,10 +93,10 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 
 [ ]  Bean validation <br/>
 [x]  Reorganizar a documentação <br/>
-[x]  Documentar a API com Swagger
-[ ]  Bater em api para buscar dados automaticamento com o cpf
+[x]  Documentar a API com Swagger <br/>
+[ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [ ]  Autenticação com JWT <br/>
-[ ]  Refatorar camada de login
+[ ]  Refatorar camada de login <br/>
 [ ]  Autenticação com google e github <br/>
 [ ]  Integração com frontend
 
