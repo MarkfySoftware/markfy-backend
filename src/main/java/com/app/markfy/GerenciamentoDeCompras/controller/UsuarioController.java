@@ -35,7 +35,7 @@ public class UsuarioController {
             @ApiResponse(responseCode = "201", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Usuario.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao cadastrar usuário")})
-    @PostMapping
+    @PostMapping("/cadastro")
     public ResponseEntity cadastrar(@RequestBody CadastroUsuarioDTO cadastroUsuarioDTO){
         try {
             DetalhamentoUsuarioDTO usuario = usuarioService.cadastrarUsuario(cadastroUsuarioDTO);

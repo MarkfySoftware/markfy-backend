@@ -42,11 +42,11 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Login> logins;
 
-    public Usuario(CadastroUsuarioDTO cadastroUsuarioDTO) {
+    public Usuario(CadastroUsuarioDTO cadastroUsuarioDTO, String senhaCriptografada) {
         this.nome = cadastroUsuarioDTO.nome();
         this.dataDeNasciemto = cadastroUsuarioDTO.dataDeNasciemto();
         this.email = cadastroUsuarioDTO.email();
-        this.senha = cadastroUsuarioDTO.senha();
+        this.senha = senhaCriptografada;
         this.sexo = cadastroUsuarioDTO.sexo();
         this.cpf = cadastroUsuarioDTO.cpf();
         this.estadoCivil = cadastroUsuarioDTO.estadoCivil();

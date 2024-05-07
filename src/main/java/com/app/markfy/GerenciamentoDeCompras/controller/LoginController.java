@@ -2,6 +2,7 @@ package com.app.markfy.GerenciamentoDeCompras.controller;
 
 import com.app.markfy.GerenciamentoDeCompras.dto.login.CadastroLoginDTO;
 import com.app.markfy.GerenciamentoDeCompras.dto.login.DetalhamentoLoginDTO;
+import com.app.markfy.GerenciamentoDeCompras.dto.security.JwtTokenDTO;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.ErrorMessage;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.LoginException;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.NotFoundResourceException;
@@ -31,14 +32,14 @@ public class LoginController {
     private ErrorMessage error;
 
     @Operation(summary = "Realiza o login de um usuário no sistema", responses = {
-            @ApiResponse(responseCode = "201", description = "Sucesso",
+            @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Login.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao efetuar login do usuário")})
     @PostMapping
     public ResponseEntity logar(@RequestBody CadastroLoginDTO cadastroLoginDTO){
         try {
-            DetalhamentoLoginDTO login = loginService.logar(cadastroLoginDTO);
-            return ResponseEntity.status(201).body(login);
+            JwtTokenDTO login = loginService.logar(cadastroLoginDTO);
+            return ResponseEntity.status(200).body(login);
         }catch (LoginException | NotFoundResourceException | Exception e){
             error.setError(e.getMessage());
             return ResponseEntity.status(400).body(error);

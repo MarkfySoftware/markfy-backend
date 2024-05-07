@@ -95,8 +95,8 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [x]  Reorganizar a documentação <br/>
 [x]  Documentar a API com Swagger <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
-[ ]  Autenticação com JWT <br/>
-[ ]  Refatorar camada de login <br/>
+[x]  Autenticação e autorização com JWT <br/>
+[x]  Refatorar camada de login <br/>
 [ ]  Autenticação com google e github <br/>
 [ ]  Integração com frontend
 

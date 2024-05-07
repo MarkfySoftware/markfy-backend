@@ -1,5 +1,6 @@
 package com.app.markfy.GerenciamentoDeCompras.service;
 
+import com.app.markfy.GerenciamentoDeCompras.config.SecurityConfig;
 import com.app.markfy.GerenciamentoDeCompras.dto.usuario.CadastroUsuarioDTO;
 import com.app.markfy.GerenciamentoDeCompras.dto.usuario.AtualizacaoUsuarioDTO;
 import com.app.markfy.GerenciamentoDeCompras.dto.usuario.DetalhamentoUsuarioDTO;
@@ -8,6 +9,7 @@ import com.app.markfy.GerenciamentoDeCompras.exceptions.NotFoundResourceExceptio
 import com.app.markfy.GerenciamentoDeCompras.model.Usuario;
 import com.app.markfy.GerenciamentoDeCompras.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private SecurityConfig securityConfig;
+
     public DetalhamentoUsuarioDTO cadastrarUsuario(CadastroUsuarioDTO cadastroUsuarioDTO) throws BusinessException {
         Optional<Usuario> usuarioByEmail = usuarioRepository.findByEmail(cadastroUsuarioDTO.email());
 
@@ -26,7 +31,8 @@ public class UsuarioService {
             throw new BusinessException("O usuário informado já possui um cadasto.");
         }
 
-        Usuario usuario =  new Usuario(cadastroUsuarioDTO);
+        String senhaCriptografada = securityConfig.passwordEncoder().encode(cadastroUsuarioDTO.senha());
+        Usuario usuario = new Usuario(cadastroUsuarioDTO, cadastroUsuarioDTO.senha());
         usuarioRepository.save(usuario);
         DetalhamentoUsuarioDTO usuarioDTO = new DetalhamentoUsuarioDTO(usuario);
         return usuarioDTO;
