@@ -112,6 +112,7 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [x]  Autenticação e autorização com JWT <br/>
 [ ]  Retorno da excpetion do oauth para o usuário <br/>
+[ ]  Sistema de roles pra bloquear os endpoint de cadastro de itens para o usuario <br/>
 [x]  Refatorar camada de login <br/>
 [ ]  Autenticação com google e github <br/>
 [ ]  Integração com frontend <br/>
