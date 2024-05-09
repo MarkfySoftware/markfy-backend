@@ -8,10 +8,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -22,23 +27,27 @@ public class SecurityConfig {
     @Autowired
     private UserAuthenticationFilter userAuthenticationFilter;
 
-    public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
-            "/gerenciamento-de-compras/login",
-            "/gerenciamento-de-compras/usuario/cadastro",
-            "/gerenciamento-de-compras/swagger-ui/index.html",
-    };
+    protected List<AntPathRequestMatcher> listaDeUrlsLiberadas = null;
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf(csrf -> csrf.disable())
-                .authorizeRequests()
-                .requestMatchers("/login", "usuario/cadastro", "swagger-ui/index.html").permitAll()
-                .anyRequest().authenticated()
-                .and().addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(withDefaults());
-        return httpSecurity.build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(AbstractHttpConfigurer::disable);
+        listaDeUrlsLiberadas = carregarListaUrlsLiberadas();
+
+        http.authorizeHttpRequests((authorize) -> {
+              for (AntPathRequestMatcher e: listaDeUrlsLiberadas){
+                  authorize.requestMatchers(e).permitAll();
+              }
+        });
+        http.authorizeHttpRequests((a) -> a.anyRequest().authenticated());
+
+        http.headers(httpSecurityHeadersConfigurer -> {
+            httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> frameOptionsConfig.sameOrigin().httpStrictTransportSecurity(d -> d.includeSubDomains(true).maxAgeInSeconds(31536000)));
+        });
+        http.addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(withDefaults());
+
+        return http.build();
     }
 
     @Bean
@@ -49,6 +58,16 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    protected List<AntPathRequestMatcher> carregarListaUrlsLiberadas(){
+        List<AntPathRequestMatcher> listaDeUrlsLiberadas = new ArrayList<>();
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui.html"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/**"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/login/token"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/usuario/cadastro"));
+
+        return listaDeUrlsLiberadas;
     }
 
 }

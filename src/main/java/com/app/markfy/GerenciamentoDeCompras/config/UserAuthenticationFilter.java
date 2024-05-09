@@ -1,6 +1,5 @@
 package com.app.markfy.GerenciamentoDeCompras.config;
 
-import com.app.markfy.GerenciamentoDeCompras.model.UserDetailsImpl;
 import com.app.markfy.GerenciamentoDeCompras.model.Usuario;
 import com.app.markfy.GerenciamentoDeCompras.repository.UsuarioRepository;
 import com.app.markfy.GerenciamentoDeCompras.service.JwtTokenService;
@@ -12,14 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.List;
 
 @Component
-public class UserAuthenticationFilter extends OncePerRequestFilter {
+public class    UserAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtTokenService jwtTokenService;
@@ -32,11 +32,9 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
         if (checkIfEndpointIsNotPublic(request)) {
             String token = recoveryToken(request);
             if (token != null) {
-                String subject = jwtTokenService.getSubjectFromToken(token);
-                Usuario user = userRepository.findByEmail(subject).get();
-                Authentication authentication =
-                        new UsernamePasswordAuthenticationToken(user.getEmail(), user.getSenha(), null);
-
+                String usuario = jwtTokenService.getSubjectFromToken(token);
+                Usuario user = userRepository.findByEmail(usuario).get();
+                Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getSenha(), null);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {
                 throw new RuntimeException("O token está ausente.");
@@ -54,8 +52,19 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private boolean checkIfEndpointIsNotPublic(HttpServletRequest request) {
+        boolean retorno = true;
+        SecurityConfig securityConfig = new SecurityConfig();
+        List<AntPathRequestMatcher> urlsLiberadas = securityConfig.carregarListaUrlsLiberadas();
         String requestURI = request.getRequestURI();
-        return !Arrays.asList(SecurityConfig.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).contains(requestURI);
+
+        for (AntPathRequestMatcher urlLiberada : urlsLiberadas){
+            if (requestURI.contains(urlLiberada.getPattern())) {
+                retorno = false;
+                break;
+            }
+        }
+
+        return retorno;
     }
 
 }

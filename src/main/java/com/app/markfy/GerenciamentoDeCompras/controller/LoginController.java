@@ -35,7 +35,7 @@ public class LoginController {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Login.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao efetuar login do usuário")})
-    @PostMapping
+    @PostMapping("/token")
     public ResponseEntity logar(@RequestBody CadastroLoginDTO cadastroLoginDTO){
         try {
             JwtTokenDTO login = loginService.logar(cadastroLoginDTO);

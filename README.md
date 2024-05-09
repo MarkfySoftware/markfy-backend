@@ -27,6 +27,20 @@ Para rodar a aplicação, siga os passos abaixo:
 5. Use o `-Dspring.profiles.active=dev` caso queira rodar em um ambiente de desenvolvimento com um banco de dados em memória (H2).
 5. Acesse a aplicação em seu navegador ou client utilizando o endereço `http://localhost:8080/gerenciamento-de-compras/endpoint-desejado`.
 
+## Autenticação e autorização 
+
+<p>Para se autenticar na API do Markfy, siga os seguintes passos:</p>
+
+1. Acesse o endpoint `/gerenciamento-de-compras/usuario/cadastro`
+2. Faça seu cadastro como usuário do Markfy
+3. Acesse o endpoint `/gerenciamento-de-compras/login/token`
+4. Insira o email e senha que foi cadastrado no sistema
+5. Copie o token que foi retornado
+6. Insira esse token no header das requisições que você deseja efetuar 
+ 
+#### Utilize a chave `Authorization` e o prefixo "Bearer". Ex: Authorization: Bearer eyJhbGci...
+
+
 ## Diagramas da arquitetura do software:
 
 ### Diagrama de classes:
@@ -45,12 +59,12 @@ Acesse: [Clique aqui para assistir o vídeo de apresentação](https://www.youtu
 Aqui estão listados todos os endpoints disponíveis na API de acordo com os domínios do software:
 
 #### Login
-1. POST `/login`: Realiza o login de um usuário já existente no sistema.
+1. POST `/login/token`: Realiza o login de um usuário já existente no sistema.
 2. GET  `/login`: Lista todos os logins já feitos.
 3. GET  `/login/{id}`: Retorna um login específico com base no ID fornecido.
 
 ### Usuário
-4. POST `/usuario`: Cadastra um usuário no sistema.
+4. POST `/usuario/cadastro`: Cadastra um usuário no sistema.
 5. GET  `/usuario`: Lista todos os usuários presentes na base de dados.
 6. GET  `/usuario/{id}`: Retorna um usuário específico com base no ID fornecido.
 7. PUT `/usuario/{id}`: Altera as informações de um usuário na base de dados
@@ -94,11 +108,14 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [ ]  Bean validation <br/>
 [x]  Reorganizar a documentação <br/>
 [x]  Documentar a API com Swagger <br/>
+[ ]  Liberar rota do Swagger para oauth e doFilter <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [x]  Autenticação e autorização com JWT <br/>
+[ ]  Retorno da excpetion do oauth para o usuário <br/>
 [x]  Refatorar camada de login <br/>
 [ ]  Autenticação com google e github <br/>
-[ ]  Integração com frontend
+[ ]  Integração com frontend <br/>
+[ ]  Integração com IA
 
 ## Melhorias do sistema 
 - Validação da existencia do usuário pelo email informado.
