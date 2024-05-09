@@ -29,17 +29,14 @@ public class    UserAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (checkIfEndpointIsNotPublic(request)) {
-            String token = recoveryToken(request);
-            if (token != null) {
-                String usuario = jwtTokenService.getSubjectFromToken(token);
-                Usuario user = userRepository.findByEmail(usuario).get();
-                Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getSenha(), null);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } else {
-                throw new RuntimeException("O token está ausente.");
-            }
+        String token = recoveryToken(request);
+        if (token != null) {
+            String usuario = jwtTokenService.getSubjectFromToken(token);
+            Usuario user = userRepository.findByEmail(usuario).get();
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getSenha(), null);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+
         filterChain.doFilter(request, response);
     }
 
@@ -49,22 +46,6 @@ public class    UserAuthenticationFilter extends OncePerRequestFilter {
             return authorizationHeader.replace("Bearer ", "");
         }
         return null;
-    }
-
-    private boolean checkIfEndpointIsNotPublic(HttpServletRequest request) {
-        boolean retorno = true;
-        SecurityConfig securityConfig = new SecurityConfig();
-        List<AntPathRequestMatcher> urlsLiberadas = securityConfig.carregarListaUrlsLiberadas();
-        String requestURI = request.getRequestURI();
-
-        for (AntPathRequestMatcher urlLiberada : urlsLiberadas){
-            if (requestURI.contains(urlLiberada.getPattern())) {
-                retorno = false;
-                break;
-            }
-        }
-
-        return retorno;
     }
 
 }

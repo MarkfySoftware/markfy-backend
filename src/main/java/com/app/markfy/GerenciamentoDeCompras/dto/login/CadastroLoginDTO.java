@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 public record CadastroLoginDTO(
     String email,
-    String senha,
-    Long idUsuario
+    String senha
 ) {
 }

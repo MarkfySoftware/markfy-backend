@@ -26,7 +26,6 @@ public class SecurityConfig {
 
     @Autowired
     private UserAuthenticationFilter userAuthenticationFilter;
-
     protected List<AntPathRequestMatcher> listaDeUrlsLiberadas = null;
 
 
@@ -45,6 +44,7 @@ public class SecurityConfig {
         http.headers(httpSecurityHeadersConfigurer -> {
             httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> frameOptionsConfig.sameOrigin().httpStrictTransportSecurity(d -> d.includeSubDomains(true).maxAgeInSeconds(31536000)));
         });
+        http.formLogin(AbstractHttpConfigurer::disable);
         http.addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(withDefaults());
 
         return http.build();
@@ -62,8 +62,9 @@ public class SecurityConfig {
 
     protected List<AntPathRequestMatcher> carregarListaUrlsLiberadas(){
         List<AntPathRequestMatcher> listaDeUrlsLiberadas = new ArrayList<>();
-        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui.html"));
-        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/**"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/index.html"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/**"));;
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/v3/api-docs/**"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/login/token"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/usuario/cadastro"));
 

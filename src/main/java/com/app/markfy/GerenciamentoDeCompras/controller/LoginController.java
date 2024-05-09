@@ -33,7 +33,7 @@ public class LoginController {
 
     @Operation(summary = "Realiza o login de um usuário no sistema", responses = {
             @ApiResponse(responseCode = "200", description = "Sucesso",
-                    content = @Content(schema = @Schema(implementation = Login.class))),
+                    content = @Content(schema = @Schema(implementation = CadastroLoginDTO.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao efetuar login do usuário")})
     @PostMapping("/token")
     public ResponseEntity logar(@RequestBody CadastroLoginDTO cadastroLoginDTO){

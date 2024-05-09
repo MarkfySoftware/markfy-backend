@@ -108,7 +108,8 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [ ]  Bean validation <br/>
 [x]  Reorganizar a documentação <br/>
 [x]  Documentar a API com Swagger <br/>
-[ ]  Liberar rota do Swagger para oauth e doFilter <br/>
+[x]  Liberar rota do Swagger para oauth e doFilter <br/>
+[ ]  Implementar autenticação pela interface do Swagger <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [x]  Autenticação e autorização com JWT <br/>
 [ ]  Retorno da excpetion do oauth para o usuário <br/>
