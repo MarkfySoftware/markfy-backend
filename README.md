@@ -105,11 +105,11 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 
 ## Próximos passos 
 
-[ ]  Bean validation <br/>
+[x]  Bean validation <br/>
 [x]  Reorganizar a documentação <br/>
 [x]  Documentar a API com Swagger <br/>
 [x]  Liberar rota do Swagger para oauth e doFilter <br/>
-[ ]  Implementar autenticação pela interface do Swagger <br/>
+[X]  Implementar autenticação pela interface do Swagger <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [x]  Autenticação e autorização com JWT <br/>
 [ ]  Retorno da excpetion do oauth para o usuário <br/>
@@ -121,5 +121,6 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 
 ## Melhorias do sistema 
 - Validação da existencia do usuário pelo email informado.
+- calculo do valor total da compra pelo valor dos itens
 - Remoção da necessidade de passar o id do usuário no momento do login.
 - Documentação da API com Swagger

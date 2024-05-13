@@ -2,8 +2,11 @@ package com.app.markfy.GerenciamentoDeCompras.dto.endereco;
 
 import com.app.markfy.GerenciamentoDeCompras.model.Endereco;
 import com.app.markfy.GerenciamentoDeCompras.model.Usuario;
+import jakarta.validation.constraints.NotNull;
+
 public record DetalhamentoEnderecoDTO(
-         Long id,
+
+        Long id,
          String cep,
          String rua,
          int numero,

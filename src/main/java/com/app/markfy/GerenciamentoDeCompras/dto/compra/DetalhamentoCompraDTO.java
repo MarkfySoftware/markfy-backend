@@ -3,6 +3,7 @@ package com.app.markfy.GerenciamentoDeCompras.dto.compra;
 import com.app.markfy.GerenciamentoDeCompras.dto.usuario.DetalhamentoUsuarioSemEnderecoDTO;
 import com.app.markfy.GerenciamentoDeCompras.model.Compra;
 import com.app.markfy.GerenciamentoDeCompras.model.Item;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,9 +11,13 @@ import java.util.List;
 public record DetalhamentoCompraDTO(
          Long id,
          LocalDate dataDaCompra,
+
          Boolean statusDaCompra,
+
          DetalhamentoUsuarioSemEnderecoDTO usuario,
+
          List<Item>itens,
+         
          Float valorTotal
 ) {
     public DetalhamentoCompraDTO(Compra compra) {
