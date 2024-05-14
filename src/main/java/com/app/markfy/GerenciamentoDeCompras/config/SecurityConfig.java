@@ -27,7 +27,7 @@ public class SecurityConfig {
 
     @Autowired
     private UserAuthenticationFilter userAuthenticationFilter;
-    protected List<AntPathRequestMatcher> listaDeUrlsLiberadas = null;
+    private List<AntPathRequestMatcher> listaDeUrlsLiberadas = null;
 
 
     @Bean
@@ -49,7 +49,7 @@ public class SecurityConfig {
         http.addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(withDefaults());
 
         return http.exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response, authException) -> {
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Token invalido ou expirado");
         })).build();
     }
