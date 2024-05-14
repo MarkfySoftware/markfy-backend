@@ -116,6 +116,7 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [x]  Liberar rota do Swagger para oauth e doFilter <br/>
 [X]  Implementar autenticação pela interface do Swagger <br/>
 [x]  Retorno da excpetion do oauth generica para o usuário <br/>
+[x]  Rota de actuator para verificar se a aplicação está no ar <br/>
 [ ]  Sistema de roles pra bloquear os endpoint de cadastro de itens para o usuario <br/>
 [ ]  Autenticação com google e github <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
