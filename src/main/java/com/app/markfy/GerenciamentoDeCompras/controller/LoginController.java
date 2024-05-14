@@ -3,6 +3,7 @@ package com.app.markfy.GerenciamentoDeCompras.controller;
 import com.app.markfy.GerenciamentoDeCompras.dto.login.CadastroLoginDTO;
 import com.app.markfy.GerenciamentoDeCompras.dto.login.DetalhamentoLoginDTO;
 import com.app.markfy.GerenciamentoDeCompras.dto.security.JwtTokenDTO;
+import com.app.markfy.GerenciamentoDeCompras.exceptions.AuthenticationException;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.ErrorMessage;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.LoginException;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.NotFoundResourceException;
@@ -50,7 +51,7 @@ public class LoginController {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = Login.class))))})
     @GetMapping
-    public ResponseEntity<List<DetalhamentoLoginDTO>> listar(){
+    public ResponseEntity listar(){
         List<DetalhamentoLoginDTO> logins = loginService.listarLogins();
         return ResponseEntity.status(200).body(logins);
     }

@@ -2,17 +2,19 @@
 
 ## Integrantes do Grupo:
 
+<br/>
+
 ### Representante/gestor do projeto:
-- Bruno de Paula (RM552226)
+Bruno de Paula (RM552226)
 
 ### Líder Técnico:
-- Kayque Lima (RM550782)
+Kayque Lima (RM550782)
 
 ### Desenvolvedor Frontend/Mobile:
-- Gabriel França (RM551905)
+Gabriel França (RM551905)
 
 ### Desenvolvedor/redator:
-- Edward de Lima (RM98676)
+Edward de Lima (RM98676)
 
 ## Como Rodar a Aplicação:
 
@@ -108,14 +110,15 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [x]  Bean validation <br/>
 [x]  Reorganizar a documentação <br/>
 [x]  Documentar a API com Swagger <br/>
+[x]  Refatorar camada de login <br/>
+[x]  Autenticação e autorização com JWT <br/>
+[x]  Filtros para interceptar as requisições <br/>
 [x]  Liberar rota do Swagger para oauth e doFilter <br/>
 [X]  Implementar autenticação pela interface do Swagger <br/>
-[ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
-[x]  Autenticação e autorização com JWT <br/>
-[ ]  Retorno da excpetion do oauth para o usuário <br/>
+[x]  Retorno da excpetion do oauth generica para o usuário <br/>
 [ ]  Sistema de roles pra bloquear os endpoint de cadastro de itens para o usuario <br/>
-[x]  Refatorar camada de login <br/>
 [ ]  Autenticação com google e github <br/>
+[ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [ ]  Integração com frontend <br/>
 [ ]  Integração com IA
 
@@ -124,3 +127,4 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 - calculo do valor total da compra pelo valor dos itens
 - Remoção da necessidade de passar o id do usuário no momento do login.
 - Documentação da API com Swagger
+- Implementação da camada de segurança na api

@@ -1,6 +1,7 @@
 package com.app.markfy.GerenciamentoDeCompras.config;
 
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +48,10 @@ public class SecurityConfig {
         http.formLogin(AbstractHttpConfigurer::disable);
         http.addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(withDefaults());
 
-        return http.build();
+        return http.exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response, authException) -> {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.getWriter().write("Token invalido ou expirado");
+        })).build();
     }
 
     @Bean
