@@ -66,6 +66,7 @@ public class SecurityConfig {
 
     protected List<AntPathRequestMatcher> carregarListaUrlsLiberadas(){
         List<AntPathRequestMatcher> listaDeUrlsLiberadas = new ArrayList<>();
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/actuator"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/index.html"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/**"));;
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/v3/api-docs/**"));
