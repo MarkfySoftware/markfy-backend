@@ -121,7 +121,7 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [ ]  Autenticação com google e github <br/>
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [ ]  Integração com frontend <br/>
-[ ]  Integração com IA
+[ ]  Integração com IA <br/>
 [ ]  Implementar backend para quem esqueceu a senha
 
 ## Melhorias do sistema 
