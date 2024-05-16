@@ -1,6 +1,7 @@
 package com.app.markfy.GerenciamentoDeCompras.controller;
 
 import com.app.markfy.GerenciamentoDeCompras.dto.redefinirSenha.EnviarEmailDTO;
+import com.app.markfy.GerenciamentoDeCompras.dto.redefinirSenha.RedefinirSenhaDTO;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.BusinessException;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.ErrorMessage;
 import com.app.markfy.GerenciamentoDeCompras.exceptions.NotFoundResourceException;
@@ -53,8 +54,8 @@ public class RedefinirSenhaController {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = EnviarEmailDTO.class)))})
     @PostMapping("/{token}")
-    public ResponseEntity redefinirSenha(@PathVariable String token, @RequestBody String novaSenha) throws NotFoundResourceException {
-        redefinirSenhaService.redefinirSenha(token, novaSenha);
+    public ResponseEntity redefinirSenha(@PathVariable String token, @RequestBody RedefinirSenhaDTO redefinirSenhaDTO) throws NotFoundResourceException {
+        redefinirSenhaService.redefinirSenha(token, redefinirSenhaDTO);
         return ResponseEntity.ok("Senha atualizada com sucesso");
     }
 }

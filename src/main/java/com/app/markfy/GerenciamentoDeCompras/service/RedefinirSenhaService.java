@@ -21,10 +21,10 @@ public class RedefinirSenhaService {
     private UsuarioRepository usuarioRepository;
 
 
-    public void redefinirSenha(String token, String novaSenha) throws NotFoundResourceException {
+    public void redefinirSenha(String token, RedefinirSenhaDTO redefinirSenhaDTO) throws NotFoundResourceException {
         String email = JWT.decode(token).getSubject();
-            Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
-        usuario.setSenha(novaSenha);
+        Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
+        usuario.setSenha(redefinirSenhaDTO.novaSenha());
         usuarioRepository.save(usuario);
     }
 }

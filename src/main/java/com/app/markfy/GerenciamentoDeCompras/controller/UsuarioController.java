@@ -59,7 +59,7 @@ public class UsuarioController {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Usuario.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao buscar usuário")})
-    @GetMapping("/{id}")
+    @GetMapping("/id/   {id}")
     public ResponseEntity buscarPorId(@PathVariable Long id){
         try {
             Usuario usuario = usuarioService.buscarUsuarioPorId(id);
@@ -74,7 +74,7 @@ public class UsuarioController {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Usuario.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao buscar usuário")})
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity buscarPorEmail(@PathVariable String email){
         try {
             Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
