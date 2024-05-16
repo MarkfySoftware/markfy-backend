@@ -4,6 +4,7 @@ import com.app.markfy.GerenciamentoDeCompras.dto.redefinirSenha.RedefinirSenhaDT
 import com.app.markfy.GerenciamentoDeCompras.exceptions.NotFoundResourceException;
 import com.app.markfy.GerenciamentoDeCompras.model.Usuario;
 import com.app.markfy.GerenciamentoDeCompras.repository.UsuarioRepository;
+import com.auth0.jwt.JWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,10 @@ public class RedefinirSenhaService {
     private UsuarioRepository usuarioRepository;
 
 
-    public void redefinirSenha(RedefinirSenhaDTO redefinirSenhaDTO) throws NotFoundResourceException {
-        String subjectFromToken = jwtTokenService.getSubjectFromToken(redefinirSenhaDTO.token());
-        Usuario usuario = usuarioService.buscarUsuarioPorEmail(subjectFromToken);
-        usuario.setSenha(redefinirSenhaDTO.novaSenha());
+    public void redefinirSenha(String token, String novaSenha) throws NotFoundResourceException {
+        String email = JWT.decode(token).getSubject();
+            Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
+        usuario.setSenha(novaSenha);
         usuarioRepository.save(usuario);
     }
 }

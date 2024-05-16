@@ -70,6 +70,21 @@ public class UsuarioController {
         }
     }
 
+    @Operation(summary = "Retorna um usuário na base de dados com base no id", responses = {
+            @ApiResponse(responseCode = "200", description = "Sucesso",
+                    content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "Erro ao buscar usuário")})
+    @GetMapping("/{email}")
+    public ResponseEntity buscarPorEmail(@PathVariable String email){
+        try {
+            Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
+            return ResponseEntity.status(200).body(usuario);
+        }catch (NotFoundResourceException e){
+            error.setError(e.getMessage());
+            return ResponseEntity.status(400).body(error);
+        }
+    }
+
     @Operation(summary = "Altera um usuário na base de dados com base no id", responses = {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(schema = @Schema(implementation = Usuario.class))),

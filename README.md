@@ -124,7 +124,6 @@ Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas
 [ ]  Bater em api para buscar dados automaticamento com o cpf <br/>
 [ ]  Integração com frontend <br/>
 [ ]  Integração com IA
-[ ]  Implementar backend para quem esqueceu a senha
 
 ## Melhorias do sistema 
 - Validação da existencia do usuário pelo email informado.

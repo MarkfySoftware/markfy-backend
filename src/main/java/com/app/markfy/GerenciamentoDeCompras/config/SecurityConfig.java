@@ -71,7 +71,8 @@ public class SecurityConfig {
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/swagger-ui/**"));;
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/v3/api-docs/**"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/login/token"));
-        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/redefinir-senha"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/redefinir-senha/enviar-email"));
+        listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/redefinir-senha/**"));
         listaDeUrlsLiberadas.add(new AntPathRequestMatcher("/usuario/cadastro"));
 
         return listaDeUrlsLiberadas;
