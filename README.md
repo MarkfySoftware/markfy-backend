@@ -27,10 +27,10 @@ Para rodar a aplicação, siga os passos abaixo:
 5. Baixe as dependências do Maven utilizando o comando: `mvn clean install`.
 6. Rode a classe `GerenciamentoDeComprasApplication`
 5. Use o `-Dspring.profiles.active=dev` caso queira rodar em um ambiente de desenvolvimento com um banco de dados em memória (H2).
-5. Acesse a aplicação a documentação da API usando o endereço: `http://localhost:8080/gerenciamento-de-compras/swagger-ui/index.html`.
+5. Acesse a documentação da API usando o endereço: `http://localhost:8080/gerenciamento-de-compras/swagger-ui/index.html`.
 6. Cria sua conta pelo endpoint `/usuario/cadastro`;
 7. Faça o login pelo endpoint `/login/token`;
-8. Pegue o token JWT retornado pelo login e insira no header das suas requisições (Authorization: Bearer eyTsdlRe...);
+8. Pegue o token JWT retornado e insira no header das requisições (Authorization: Bearer eyTsdlRe...);
 9. Utilize a interface do swagger para facilitar as chamadas ;)
 
 ## Autenticação e autorização 
