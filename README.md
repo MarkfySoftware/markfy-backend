@@ -28,7 +28,7 @@ Para rodar a aplicação, siga os passos abaixo:
 6. Rode a classe `GerenciamentoDeComprasApplication`
 5. Use o `-Dspring.profiles.active=dev` caso queira rodar em um ambiente de desenvolvimento com um banco de dados em memória (H2).
 5. Acesse a documentação da API usando o endereço: `http://localhost:8080/gerenciamento-de-compras/swagger-ui/index.html`.
-6. Siga os passos de Autenticação e autorização descritos abaixo
+6. Siga os passos de autenticação e autorização descritos no tópico abaixo
 9. Utilize a interface do swagger para facilitar as chamadas ;)
 
 ## Autenticação e autorização 
