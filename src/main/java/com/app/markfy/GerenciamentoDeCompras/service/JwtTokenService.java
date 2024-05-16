@@ -15,9 +15,8 @@ import java.time.ZonedDateTime;
 @Service
 public class JwtTokenService {
 
-    private static final String SECRET_KEY = "4Z^XrroxR@dWxqf$mTTKwW$!@#qGr4P"; // Chave secreta utilizada para gerar e verificar o token
-
-    private static final String ISSUER = "pizzurg-api"; // Emissor do token
+    protected static final String SECRET_KEY = "4Z^XrroxR@dWxqf$mTTKwW$!@#qGr4P";
+    protected static final String ISSUER = "pizzurg-api";
 
     public String generateToken(Usuario usuario) {
         try {
@@ -35,24 +34,23 @@ public class JwtTokenService {
 
     public String getSubjectFromToken(String token) {
         try {
-            // Define o algoritmo HMAC SHA256 para verificar a assinatura do token passando a chave secreta definida
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
             return JWT.require(algorithm)
-                    .withIssuer(ISSUER) // Define o emissor do token
+                    .withIssuer(ISSUER)
                     .build()
-                    .verify(token) // Verifica a validade do token
-                    .getSubject(); // Obtém o assunto (neste caso, o nome de usuário) do token
+                    .verify(token)
+                    .getSubject();
         } catch (JWTVerificationException exception){
             throw new JWTVerificationException("Token inválido ou expirado.");
         }
     }
 
-    private Instant creationDate() {
+    protected static Instant creationDate() {
         return ZonedDateTime.now(ZoneId.of("America/Recife")).toInstant();
     }
 
-    private Instant expirationDate() {
-        return ZonedDateTime.now(ZoneId.of("America/Recife")).plusHours(4).toInstant();
+    protected static Instant expirationDate() {
+        return ZonedDateTime.now(ZoneId.of("America/Recife")).plusHours(2).toInstant();
     }
 
 }
