@@ -67,37 +67,41 @@ Aqui estão listados todos os endpoints disponíveis na API de acordo com os dom
 2. GET  `/login`: Lista todos os logins já feitos.
 3. GET  `/login/{id}`: Retorna um login específico com base no ID fornecido.
 
+#### Redefinir senha
+4. POST `/redefinir-senha/enviar-email`: Realiza o envio de um e-mail para o usuário com a url de redefinição
+5. POST `/redefinir-senha/{token}`: Realiza a atualização da senha conforme o token passado no path
+
 ### Usuário
-4. POST `/usuario/cadastro`: Cadastra um usuário no sistema.
-5. GET  `/usuario`: Lista todos os usuários presentes na base de dados.
-6. GET  `/usuario/{id}`: Retorna um usuário específico com base no ID fornecido.
-7. PUT `/usuario/{id}`: Altera as informações de um usuário na base de dados
-8. DELETE `/usuario/{id}`: Deleta um usuário da base de dado
+6. POST `/usuario/cadastro`: Cadastra um usuário no sistema.
+7. GET  `/usuario`: Lista todos os usuários presentes na base de dados.
+8. GET  `/usuario/id/{id}`: Retorna um usuário específico com base no ID fornecido.
+9. GET  `/usuario/email/{email}`: Retorna um usuário específico com base no email fornecido.
+10. PUT `/usuario/{id}`: Altera as informações de um usuário na base de dados
+11. DELETE `/usuario/{id}`: Deleta um usuário da base de dado
 
 ### Endereço
-9. GET `/endereco`: Lista todos os endereços presentes na base de dados.
-10. GET  `/endereco/{id}`: Retorna um endereço específico com base no ID fornecido.
-11. PUT `/endereco/{id}`: Altera as informações de um endereço na base de dados
+12. GET `/endereco`: Lista todos os endereços presentes na base de dados.
+13. GET  `/endereco/{id}`: Retorna um endereço específico com base no ID fornecido.
+14. PUT `/endereco/{id}`: Altera as informações de um endereço na base de dados
 
 ### Item
-12. POST `/item`: Cadastra um item no sistema.
-13. GET  `/item`: Lista todos os items presentes na base de dados.
-14. GET  `/item/{id}`: Retorna um item específico com base no ID fornecido.
-15. PUT `/item/{id}`: Altera as informações de um item na base de dados
-16. DELETE `/item/{id}`: Deleta um item da base de dado
+15. POST `/item`: Cadastra um item no sistema.
+16. GET  `/item`: Lista todos os items presentes na base de dados.
+17. GET  `/item/{id}`: Retorna um item específico com base no ID fornecido.
+18. PUT `/item/{id}`: Altera as informações de um item na base de dados
+19. DELETE `/item/{id}`: Deleta um item da base de dado
 
 ### Compra
-17. POST `/compra`: Cadastra uma compra no sistema.
-18. POST `/compra/{id}`: Confirma que a compra foi realizada com êxito.
-19. GET  `/compra`: Lista todos os compras presentes na base de dados.
-20. GET  `/compra/{id}`: Retorna uma compra específico com base no ID fornecido.
-21. DELETE `/compra/{id}`: Deleta uma compra da base de dados
-
+20. POST `/compra`: Cadastra uma compra no sistema.
+21. POST `/compra/{id}`: Confirma que a compra foi realizada com êxito.
+22. GET  `/compra`: Lista todos os compras presentes na base de dados.
+23. GET  `/compra/{id}`: Retorna uma compra específico com base no ID fornecido.
+24. DELETE `/compra/{id}`: Deleta uma compra da base de dados
 
 ## Atenção
 Para mais detalhes sobre cada endpoint acesse a collection do Insomnia com todas as requisiçoes existentes. Siga os passos abaixo para executá-las.
 1. Na raiz desse repositório entre na pasta `documentos_do_projeto`.
-2. Faça o download do arquivo: `Insominia_Collection_Markfy.json`.
+2. Faça o download do arquivo: `Insominia_markfy_requests.json`.
 1. Certifique-se de ter o software Insomnia instalado na sua máquina.
 3. No Insomnia clique no botão `create` ou no ícone de mais `+`.
 4. Depois clique na opção `importar`.
