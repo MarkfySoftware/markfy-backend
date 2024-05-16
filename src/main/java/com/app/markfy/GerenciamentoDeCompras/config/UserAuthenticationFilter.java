@@ -62,7 +62,11 @@ public class    UserAuthenticationFilter extends OncePerRequestFilter {
         String requestUrl = request.getRequestURI();
 
         for(AntPathRequestMatcher urlLiberada : urlsLiberadas){
-            if(requestUrl.contains(urlLiberada.getPattern()) || requestUrl.contains("/v3/api-docs") || requestUrl.contains("swagger-ui")){
+            if(requestUrl.contains(urlLiberada.getPattern())
+                    || requestUrl.contains("/v3/api-docs")
+                    || requestUrl.contains("swagger-ui")
+                    || requestUrl.contains("redefinir-senha")
+            ){
                 return true;
             }
         }
